@@ -1,26 +1,29 @@
 <?php
+/** @var yii\web\View $this
+ * @var $data_bdr
+ * @var $data_ip
+ * @var $model
+ */
 
-
-/** @var yii\web\View $this */
-/** @var $data_bdr */
-/** @var $data_ip */
 
 //var_dump($data_bdr);
 use dosamigos\chartjs\ChartJs;
+use yii\widgets\ActiveForm;
 
 $this->title = 'Главная';
-
-
 ?>
 
 <div class="container">
     <div class="field_dash">
         <div class="left_part">
 
-            <form enctype="multipart/form-data" method="post">
-                <input class="input_file" type="file" name="file" placeholder="Загрузите файл (.xls)">
-                <button class="btn">Отправить</button>
-            </form>
+            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+
+            <?= $form->field($model, 'file')->fileInput(['class'=>"input_file"]) ?>
+
+            <button class="btn">Submit</button>
+
+            <?php ActiveForm::end() ?>
 
             <div class="block_charts">
                 <div class="chart">
@@ -35,7 +38,7 @@ $this->title = 'Главная';
                             'data' => $data_bdr
 //                            'data' => [300,50,60,40,100,10,20,15]
                         ]);
-//                        var_dump($data_bdr);
+                        //                        var_dump($data_bdr);
                         ?>
                     </div>
                 </div>
@@ -43,16 +46,16 @@ $this->title = 'Главная';
                 <div class="chart">
                     <h4>Договоры (ИП)</h4>
                     <div class="chart_field">
-                    <?= ChartJs::widget([
-                        'type' => 'pie',
-                        'options' => [
-                            'height' => 300,
-                            'width' => 300
-                        ],
-                        'data' => $data_ip
+                        <?= ChartJs::widget([
+                            'type' => 'pie',
+                            'options' => [
+                                'height' => 300,
+                                'width' => 300
+                            ],
+                            'data' => $data_ip
 //                            'data' => [300,50,60,40,100,10,20,15]
-                    ]);
-                    ?>
+                        ]);
+                        ?>
                     </div>
                 </div>
             </div>
@@ -169,7 +172,7 @@ $this->title = 'Главная';
 
     buttonOpenBdr.addEventListener('click', () => {
         iframe.style.display = 'block';
-        iframe.src = 'table_bdr.php';
+        iframe.src = '/site/table-bdr';
     });
 
     buttonCloseBdr.addEventListener('click', () => {
@@ -178,7 +181,7 @@ $this->title = 'Главная';
 
     buttonOpenIp.addEventListener('click', () => {
         iframe.style.display = 'block';
-        iframe.src = './table_ip.php';
+        iframe.src = '/site/table-ip';
     });
 
     buttonCloseIp.addEventListener('click', () => {
@@ -186,8 +189,6 @@ $this->title = 'Главная';
     });
 
 </script>
-
-
 
 
 <!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->

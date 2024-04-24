@@ -1,6 +1,5 @@
 <?php
-
-require "./vendor/autoload.php";
+namespace app\models;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 

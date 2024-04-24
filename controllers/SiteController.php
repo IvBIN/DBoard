@@ -2,7 +2,8 @@
 
 namespace app\controllers;
 
-use Parser;
+use app\models\Form;
+use app\models\Parser;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -10,7 +11,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -22,13 +23,19 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout'],
+                'only' => ['logout', 'index'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+
                 ],
             ],
             'verbs' => [
@@ -66,19 +73,24 @@ class SiteController extends Controller
     {
         $this->view->title = "Test";
 
-        $fileName = $_FILES['file']['tmp_name'];
-        if (!empty($fileName)) {
-            $parser = new Parser($fileName);
-            $chart_bdr = $parser->getDataBdr();
-//    var_dump($chart_bdr);
+        $model = new Form();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+            if ($model->validate()) {
+                $fileName = $model->file->tempName;
 
-            $chart_ip = $parser->getDataIp();
-//    var_dump($chart_ip);
+                $parser = new Parser($fileName);
+                $chart_bdr = $parser->getDataBdr();
 
-            $table_bdr = $parser->getInfo();
-            $_SESSION['bdr'] = $table_bdr;
-            $_SESSION['ip'] = $table_bdr;
+                $chart_ip = $parser->getDataIp();
+
+                $table_bdr = $parser->getInfo();
+                $_SESSION['tableInfo'] = $table_bdr;
+            }
         }
+
+
+
 
         $data_bdr = [
             'labels' => ['ТП', 'КЗ', 'Прейскурант', 'ГПК', 'ТП_в', 'КЗ_в', 'Прейскурант_в', 'ГПК_в'],
@@ -101,8 +113,8 @@ class SiteController extends Controller
                     'pointHoverBackgroundColor' => "#fff",
                     'pointHoverBorderColor' => "rgba(179,181,198,1)",
 //                        'data' => [65, 59, 90, 81, 56, 55, 40]
-//                    'data' => $chart_bdr
-                    'data' => [200,50,60,40,100,10,20,15]
+                    'data' => $chart_bdr
+//                    'data' => [200,50,60,40,100,10,20,15]
                 ]
 //                [
 //                    'label' => "My Second dataset",
@@ -138,8 +150,8 @@ class SiteController extends Controller
                     'pointHoverBackgroundColor' => "#fff",
                     'pointHoverBorderColor' => "rgba(179,181,198,1)",
 //                        'data' => [65, 59, 90, 81, 56, 55, 40]
-//                    'data' => $chart_ip
-                    'data' => [180,30,80,40,120,30,10,25]
+                    'data' => $chart_ip
+//                    'data' => [180,30,80,40,120,30,10,25]
                 ]
 //                [
 //                    'label' => "My Second dataset",
@@ -154,25 +166,27 @@ class SiteController extends Controller
             ]
         ];
 
-        return $this->render('index',['data_bdr' => $data_bdr, 'data_ip' => $data_ip]);
+        return $this->render('index',['data_bdr' => $data_bdr, 'data_ip' => $data_ip, 'model' => $model]);
 //        return $this->render('test',['data_bdr' => $data_bdr]);
     }
 
-    public function actionTable_bdr()
+    public function actionTableBdr()
     {
         $this->view->title = "Table_bdr";
+        $this->layout = 'iframe';
 
-        $fileName = $_FILES['file']['tmp_name'];
-        if (!empty($fileName)) {
-            $parser = new Parser($fileName);
-            $table_bdr = $parser->getInfo();
-            $_SESSION['bdr'] = $table_bdr;
-        }
+//        $fileName = $_FILES['file']['tmp_name'];
+//        if (!empty($fileName)) {
+//            $parser = new Parser($fileName);
+//            $table_bdr = $parser->getInfo();
+//            $_SESSION['bdr'] = $table_bdr;
+//        }
 
-        return $this->render('table_bdr',['table_bdr' => $table_bdr]);
+//        return $this->render('table_bdr');
+        return $this->render('table_bdr',['table_bdr' => $_SESSION['tableInfo']]);
     }
 
-    public function actionTable_ip()
+    public function actionTableIp()
     {
         $this->view->title = "Table_ip";
 
