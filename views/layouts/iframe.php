@@ -2,6 +2,7 @@
 
 /** @var yii\web\View $this */
 /** @var string $content */
+\app\assets\IframeAsset::register($this)
 
 ?>
 <?php $this->beginPage() ?>

@@ -83,11 +83,20 @@ class SiteController extends Controller
                 $chart_bdr = $parser->getDataBdr();
 
                 $chart_ip = $parser->getDataIp();
+                $count_contract = $parser->getCountContracts();
 
                 $table_bdr = $parser->getInfo();
-                $_SESSION['tableInfo'] = $table_bdr;
+//                var_dump($table_bdr);
+//                $_SESSION['tableInfo'] = $table_bdr;
+                Yii::$app->session->set('tableInfo', $table_bdr);
             }
         }
+        else {
+//            Yii::$app->session->set('tableInfo', '');
+            unset($_SESSION['tableInfo']);
+
+        }
+
 
 
 
@@ -166,7 +175,7 @@ class SiteController extends Controller
             ]
         ];
 
-        return $this->render('index',['data_bdr' => $data_bdr, 'data_ip' => $data_ip, 'model' => $model]);
+        return $this->render('index',['data_bdr' => $data_bdr, 'data_ip' => $data_ip, 'count_contract' =>$count_contract,'model' => $model]);
 //        return $this->render('test',['data_bdr' => $data_bdr]);
     }
 
@@ -175,29 +184,34 @@ class SiteController extends Controller
         $this->view->title = "Table_bdr";
         $this->layout = 'iframe';
 
-//        $fileName = $_FILES['file']['tmp_name'];
-//        if (!empty($fileName)) {
-//            $parser = new Parser($fileName);
-//            $table_bdr = $parser->getInfo();
-//            $_SESSION['bdr'] = $table_bdr;
-//        }
-
-//        return $this->render('table_bdr');
         return $this->render('table_bdr',['table_bdr' => $_SESSION['tableInfo']]);
+
     }
 
     public function actionTableIp()
     {
         $this->view->title = "Table_ip";
+        $this->layout = 'iframe';
 
-        $fileName = $_FILES['file']['tmp_name'];
-        if (!empty($fileName)) {
-            $parser = new Parser($fileName);
-            $table_bdr = $parser->getInfo();
-            $_SESSION['ip'] = $table_bdr;
-        }
+        return $this->render('table_ip',['table_bdr' => $_SESSION['tableInfo']]);
+    }
 
-        return $this->render('table_ip',['table_bdr' => $table_bdr]);
+    public function actionHelp()
+    {
+        $this->view->title = "Help";
+        $this->layout = 'iframe';
+
+        return $this->render('help');
+    }
+
+    public function actionDownload()
+    {
+        $file = './files/test02.xls';
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($file).'"');
+        readfile($file);
+        return $this->goHome();
+
     }
 
 //    /**

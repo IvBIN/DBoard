@@ -39,9 +39,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
         <nav>
             <ul>
-                <li><a href="#">⬇️ Скачать шаблон</a></li>
+                <li><a href="/site/help">ℹ️ Помощь</a></li>
+                <li><a href="/site/download">⬇️ Скачать шаблон</a></li>
                 <?php if (Yii::$app->user->isGuest):?>
-                    <li><a href="/user/login">Войти</a></li>
+                    <li><a href="/user/login">🛂Войти</a></li>
                     <li><a class="btn btn_header" href="/user/registration">Регистрация</a></li>
                 <?php else: ?>
                     <?= '<li>'.

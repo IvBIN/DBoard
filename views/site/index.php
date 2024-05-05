@@ -2,11 +2,13 @@
 /** @var yii\web\View $this
  * @var $data_bdr
  * @var $data_ip
+ * @var $count_contract
  * @var $model
  */
 
 
 //var_dump($data_bdr);
+//var_dump($count_contract);
 use dosamigos\chartjs\ChartJs;
 use yii\widgets\ActiveForm;
 
@@ -16,14 +18,17 @@ $this->title = 'Главная';
 <div class="container">
     <div class="field_dash">
         <div class="left_part">
+            <div class="input_file_block">
 
-            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'class'=>"form_input_file"]]) ?>
+                <div class="input">
+                    <?= $form->field($model, 'file')->fileInput(['class'=>"input_file"]) ?>
+                </div>
 
-            <?= $form->field($model, 'file')->fileInput(['class'=>"input_file"]) ?>
-
-            <button class="btn">Submit</button>
+            <button class="btn">Загрузить</button>
 
             <?php ActiveForm::end() ?>
+            </div>
 
             <div class="block_charts">
                 <div class="chart">
@@ -38,7 +43,7 @@ $this->title = 'Главная';
                             'data' => $data_bdr
 //                            'data' => [300,50,60,40,100,10,20,15]
                         ]);
-                        //                        var_dump($data_bdr);
+//                                                var_dump($data_bdr);
                         ?>
                     </div>
                 </div>
@@ -60,13 +65,13 @@ $this->title = 'Главная';
                 </div>
             </div>
 
-            <div class="iframeWindow"></div>
+<!--            <div class="iframeWindow"></div>-->
             <div class="block_info">
                 <div class="bdr_line">
                     <div class="info_block">
                         <span><b>Договоры БДР</b></span><br>
-                        <span>Заключено: </span><br>
-                        <span>Исполнено: </span><br>
+                        <span>Заключено: <b><?php echo $count_contract[0] ?></b></span><br>
+                        <span>Исполнено: <b><?php echo $count_contract[1] ?></b></span><br>
                     </div>
                     <div class="button_block">
                         <button id="buttonOpenBdr" class="btn">Раскрыть БДР</button>
@@ -77,8 +82,8 @@ $this->title = 'Главная';
                 <div class="ip_line">
                     <div class="info_block">
                         <span><b>Договоры ИП</b></span><br>
-                        <span>Заключено: </span><br>
-                        <span>Исполнено: </span><br>
+                        <span>Заключено: <b><?php echo $count_contract[2] ?></b></span><br>
+                        <span>Исполнено: <b><?php echo $count_contract[3] ?></b></span><br>
                     </div>
                     <div class="button_block">
                         <button id="buttonOpenIp" class="btn">Раскрыть ИП</button>
@@ -87,13 +92,13 @@ $this->title = 'Главная';
                 </div>
             </div>
 
-            <iframe id="iframe" class="active iframe" name="table_bdr" width="740" height="300"></iframe>
+            <iframe id="iframe" class="active iframe" name="table_bdr" width="740" height="295"></iframe>
         </div>
 
         <div class="right_part">
             <div class="block_right_up">
-                <h2 class="title_info">Отчеты</h2>
-                <span class="title_context">пояснение Отчеты</span>
+                <h4 class="title_info">Отчеты</h4>
+                <span class="title_context">Пояснение: Приказ № : Отчеты</span>
                 <div class="info_graf_report1">
                     <span class="title_context title_report">ЕАЭС</span>
                     <div class="report_block">
@@ -105,8 +110,8 @@ $this->title = 'Главная';
                 </div>
             </div>
             <div class="block_right_medium">
-                <h2 class="title_info">Налоговый мониторинг</h2>
-                <span class="title_context">пояснение НМ</span>
+                <h4 class="title_info">Налоговый мониторинг</h4>
+                <span class="title_context">Пояснение: Приказ № : НМ</span>
                 <div class="info_graf_control">
                     <div class="block_control">
                         <span class="title_context title_control">ПХД :</span>

@@ -62,8 +62,15 @@ class Parser
         return $finallyData;
     }
 
-
-
+    public function getCountContracts()
+    {
+        $finallyData = [];
+        $cells = ['f5','f11','l5','l11'];
+        foreach ($cells as $value) {
+            $finallyData[] = (int)$this->data->getCell($value)->getFormattedValue();
+        }
+        return $finallyData;
+    }
 
     /**
      * Функция для получения статистики за период (Дополни при необходимости)

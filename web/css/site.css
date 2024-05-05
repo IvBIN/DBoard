@@ -112,18 +112,33 @@ body {
 
 }
 
-form {
+.input_file_block {
+    display: flex;
+    justify-content: space-between;
     margin-left: 20px;
     padding-left: 10px;
-    background: #92c2e1;
+    /*background: #92c2e1;*/
+    background: #70bdf6;
     color: #032557;
     border: 1px solid #92c2e1;
     border-radius: 5px;
 }
-.input_file {
-    /*background: #92c2e1;*/
-    color: #032557;
+
+.form_input_file {
+    display: flex;
+    width: 350px;
+    align-items: center;
 }
+.input_file {
+    display: block;
+}
+
+.input div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
 
 .block_charts {
     display: flex;
@@ -158,12 +173,15 @@ h4 {
 
 .iframe {
     border: 1px solid #2a504c;
+    border-radius: 5px;
     background: #d9d6d6;
-    position: absolute;
+    margin-top: 5px;
+    /*padding-left: 10px;*/
+    /*position: absolute;*/
     top: 45%;
     left: 50%;
-    z-index: 1000;
-    transform: translate(-50%, -50%);
+    /*z-index: 1000;*/
+    /*transform: translate(-50%, -50%);*/
 }
 
 .block_info {
@@ -193,14 +211,61 @@ h4 {
 
 }
 
+/****** right part ******/
 
+.block_right_up, .block_right_medium, .block_right_down {
+    border: 1px solid #0c4128;
+}
 
+.right_part h4 {
+    font-family: "Colibri", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #040462;
+    margin-bottom: 10px;
+}
 
+.title_context {
+    font-family: "Colibri", sans-serif;
+    /*font-weight: bold;*/
+    text-align: center;
+    color: #040462;
+}
+
+.title_report, .title_control {
+    /*display: flex;*/
+    font-family: "Colibri", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #040462;
+}
+
+.info_graf_report1, .info_graf_control {
+    max-width: 358px;
+    border: 1px solid #0c4128;
+    text-align: center;
+}
+
+.report_block, .block_part_contr {
+    display: flex;
+    justify-content: space-between;
+}
+.report_part, .control_part {
+    /*width: 50px;*/
+    width: max-content;
+    background: #70bdf6;
+    color: #032557;
+    border-radius: 5px;
+    text-align: center;
+}
 
 footer {
     text-align: center;
 }
 
+/*.help_head h2 {*/
+/*    text-align: center;*/
+/*}*/
 
 /*main > .container {*/
 /*    padding: 70px 15px 20px;*/

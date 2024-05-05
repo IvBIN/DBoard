@@ -1,0 +1,113 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn {
+    width: max-content;
+    height: max-content;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 5px 10px;
+    /*padding: 5px;*/
+    background: #3C578C;
+    border-radius: 5px;
+    color:  #d9d6d6;
+}
+
+.btn:hover {
+    background:  #032557;
+    color:  #92c2e1;
+}
+/*.logo_header {*/
+/*    text-align: center;*/
+/*}*/
+/*.help_head h2 {*/
+/*    text-align: center;*/
+
+/*}*/
+.logo_header {
+    text-align: center;
+    color: #032557;
+    background: #92c2e1;
+    opacity: 0.53;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 5px 14px #212b3f
+}
+.terms_title {
+    /*color: #032557;*/
+    color: #545454;
+    margin-top: 30px;
+}
+.terms_title {
+    width: max-content;
+    /*text-decoration: underline;*/
+    border-bottom: 1px solid #212b3f;
+}
+.welcome {
+    text-align: center;
+    font-family: Times New Roman sans-serif;
+    color: #545454;
+}
+
+.help_field, .term {
+    font-family: Times New Roman sans-serif;
+    font-size: 20px;
+    color: #545454;
+
+}
+
+.footer_field {
+    margin-top: 200px;
+    text-align: center;
+    color: #032557;
+    opacity: 0.53;
+
+    background: #92c2e1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 5px 14px #212b3f
+}
+
+
+
+
+/***** for table_bdr and table_ip ******/
+
+.table_bdr {
+    margin-left: 10px;
+}
+.table_field {
+    display: flex;
+    width: 800px;
+    margin-left: 10px;
+}
+.table_head {
+    /*border: 1px solid #FFFFFF;*/
+    border-width: 1px;
+}
+th, td {
+    padding: 5px 10px;
+    font-family: "Colibri", sans-serif;
+    font-size: 12px;
+    /*background: #92c2e1;*/
+    background: #70bdf6;
+    text-align: center;
+    margin: 5px;
+    /*border: 1px solid #FFFFFF;*/
+    /*border-width: 1px;*/
+    /*border-color: #FFFFFF;*/
+    /*border-style: solid;*/
+}
+h2 {
+    font-weight: bold;
+    color: #032557;
+    /*margin-left: 10px;*/
+}
