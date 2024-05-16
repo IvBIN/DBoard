@@ -3,12 +3,14 @@
  * @var $data_bdr
  * @var $data_ip
  * @var $count_contract
+ * @var $date_report
  * @var $model
  */
 
-
 //var_dump($data_bdr);
 //var_dump($count_contract);
+//var_dump($date_report);
+
 use dosamigos\chartjs\ChartJs;
 use yii\widgets\ActiveForm;
 
@@ -18,6 +20,16 @@ $this->title = 'Главная';
 <div class="container">
     <div class="field_dash">
         <div class="left_part">
+
+
+            <?php if (!Yii::$app->user->isGuest): ?>
+                <?php if ($_SESSION['welcome']): unset($_SESSION['welcome'])?>
+                    <div class="welcome_box">
+                        <h1 class="welcome">Добро пожаловать в DBoard!</h1>
+                    </div>
+                <?php endif;?>
+
+
             <div class="input_file_block">
 
             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'class'=>"form_input_file"]]) ?>
@@ -29,6 +41,7 @@ $this->title = 'Главная';
 
             <?php ActiveForm::end() ?>
             </div>
+            <?php endif;?>
 
             <div class="block_charts">
                 <div class="chart">
@@ -65,7 +78,6 @@ $this->title = 'Главная';
                 </div>
             </div>
 
-<!--            <div class="iframeWindow"></div>-->
             <div class="block_info">
                 <div class="bdr_line">
                     <div class="info_block">
@@ -93,6 +105,7 @@ $this->title = 'Главная';
             </div>
 
             <iframe id="iframe" class="active iframe" name="table_bdr" width="740" height="295"></iframe>
+            <iframe id="iframe2" class="active iframe" name="comment" width="1142" height="295"></iframe>
         </div>
 
         <div class="right_part">
@@ -107,6 +120,16 @@ $this->title = 'Главная';
                         <span class="report_part">III</span>
                         <span class="report_part">IV</span>
                     </div>
+                    <div class="report_date_block">
+                        <span class="report_part rep_date"><?php echo $date_report[0]?></span>
+                        <span class="report_part rep_date"><?php echo $date_report[1]?></span>
+                        <span class="report_part rep_date"><?php echo $date_report[2]?></span>
+                        <span class="report_part rep_date"><?php echo $date_report[3]?></span>
+<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
+<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
+<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
+<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
+                    </div>
                 </div>
             </div>
             <div class="block_right_medium">
@@ -114,7 +137,7 @@ $this->title = 'Главная';
                 <span class="title_context">Пояснение: Приказ № : НМ</span>
                 <div class="info_graf_control">
                     <div class="block_control">
-                        <span class="title_context title_control">ПХД :</span>
+                        <span class="title_context title_control">Проверка предоставленных документов:</span>
                         <div class="block_part_contr">
                             <span class="control_part">1</span>
                             <span class="control_part">2</span>
@@ -131,7 +154,7 @@ $this->title = 'Главная';
                         </div>
                     </div>
                     <div class="block_control">
-                        <span class="title_context title_control">ЭЦС :</span>
+                        <span class="title_context title_control">Экономическая целесообразность сделки:</span>
                         <div class="block_part_contr">
                             <span class="control_part">1</span>
                             <span class="control_part">2</span>
@@ -150,10 +173,10 @@ $this->title = 'Главная';
                     <div class="block_control">
                         <span class="title_context title_control">Акты сверки :</span>
                         <div class="block_part_contr">
-                            <span class="control_part">1 квартал</span>
-                            <span class="control_part">2 квартал</span>
-                            <span class="control_part">3 квартал</span>
-                            <span class="control_part">4 квартал</span>
+                            <span class="control_part qartal">1 квартал</span>
+                            <span class="control_part qartal">2 квартал</span>
+                            <span class="control_part qartal">3 квартал</span>
+                            <span class="control_part qartal">4 квартал</span>
                         </div>
                     </div>
                 </div>
@@ -167,137 +190,130 @@ $this->title = 'Главная';
 
 <script>
 
-    let iframe = document.getElementById('iframe');
-    iframe.style.display = 'none';
-    let buttonOpenBdr = document.getElementById('buttonOpenBdr');
-    let buttonCloseBdr = document.getElementById('buttonCloseBdr');
-
-    let buttonOpenIp = document.getElementById('buttonOpenIp');
-    let buttonCloseIp = document.getElementById('buttonCloseIp');
-
-    buttonOpenBdr.addEventListener('click', () => {
-        iframe.style.display = 'block';
-        iframe.src = '/site/table-bdr';
-    });
-
-    buttonCloseBdr.addEventListener('click', () => {
-        iframe.style.display = 'none';
-    });
-
-    buttonOpenIp.addEventListener('click', () => {
-        iframe.style.display = 'block';
-        iframe.src = '/site/table-ip';
-    });
-
-    buttonCloseIp.addEventListener('click', () => {
-        iframe.style.display = 'none';
-    });
+    // let iframe = document.getElementById('iframe');
+    // iframe.style.display = 'none';
+    // let buttonOpenBdr = document.getElementById('buttonOpenBdr');
+    // let buttonCloseBdr = document.getElementById('buttonCloseBdr');
+    //
+    // let buttonOpenIp = document.getElementById('buttonOpenIp');
+    // let buttonCloseIp = document.getElementById('buttonCloseIp');
+    //
+    // buttonOpenBdr.addEventListener('click', () => {
+    //     iframe.style.display = 'block';
+    //     iframe.src = '/site/table-bdr';
+    // });
+    //
+    // buttonCloseBdr.addEventListener('click', () => {
+    //     iframe.style.display = 'none';
+    // });
+    //
+    // buttonOpenIp.addEventListener('click', () => {
+    //     iframe.style.display = 'block';
+    //     iframe.src = '/site/table-ip';
+    // });
+    //
+    // buttonCloseIp.addEventListener('click', () => {
+    //     iframe.style.display = 'none';
+    // });
+    //
+    //
+    // // let report_cell = document.querySelector('.report_part');
+    // // report_cell.addEventListener('click', () => {
+    // //     report_cell.style.background = '#92c2e1';
+    // // });
+    //
+    // // const today = new Date();
+    // const today = new Date().toLocaleDateString() ;
+    //
+    // let report_cell = document.querySelectorAll('.report_part');
+    //
+    // report_cell.forEach((report_part) => {
+    //     report_part.addEventListener('click', () => {
+    //         report_part.style.background = '#92c2e1';
+    //         // report_part.innerHTML = today;
+    //
+    //     });
+    // });
+    //
+    // let rep_date_cell = document.querySelectorAll('.rep_date');
+    // rep_date_cell.forEach((rep_date) => {
+    //     if (rep_date.textContent !== '') {
+    //             rep_date.style.background = '#92c2e1';
+    //     }
+    // });
+    //
+    // let control_cell = document.querySelectorAll('.control_part');
+    //
+    // control_cell.forEach((control_part) => {
+    //     control_part.addEventListener('click', () => {
+    //         control_part.style.background = '#92c2e1';
+    //         // control_part.innerHTML = today;
+    //
+    //         console.log(control_part);
+    //     });
+    // });
+    //
+    // let qartal_cell = document.querySelectorAll('.qartal');
+    //
+    // qartal_cell.forEach((qartal) => {
+    //     qartal.addEventListener('click', () => {
+    //         qartal.style.background = '#92c2e1';
+    //
+    //         console.log(qartal);
+    //     });
+    // });
+    //
+    // // ***** Music *****
+    //
+    // let music = new Audio();
+    // music.src = './sound/Silver.mp3';
+    //
+    // let sound = document.querySelector('.music');
+    // sound.addEventListener('click', () => {
+    //     sound.classList.add('playM');
+    //     music.loop = true;
+    //     music.play();
+    // });
+    //
+    //
+    //
+    // // ***** Welcome *****
+    //
+    // // let leftPart = document.querySelector(".left_part");
+    // // leftPart.style.position = 'relative';
+    // let welcome = document.querySelector(".welcome");
+    //
+    // setTimeout( () => {
+    //     welcome.remove()
+    // }, 2000);
+    //
+    //
+    // // let welcome = document.createElement("h1");
+    // // welcome.classList.add('wellClass');
+    // // welcome.style.position = 'absolute';
+    // // welcome.style.top = '40%';
+    // // welcome.style.left = '30%';
+    // // welcome.style.zIndex = '50';
+    // // welcome.style.width = 'max-content';
+    // // welcome.style.padding = '50px 50px';
+    // // welcome.style.height = '200px';
+    // // welcome.style.borderRadius = '5px';
+    // // welcome.style.background = '#7084BBFF';
+    // //
+    // // welcome.style.fontFamily = 'Colibri, sans-serif';
+    // // welcome.style.fontSize = '40px';
+    // // welcome.style.fontWeight = 'bold';
+    // // welcome.style.color = '#F0F0F3';
+    // // welcome.innerText = 'Добро пожаловать в DBoard!';
+    //
+    //
+    //
+    // // setTimeout( () => {
+    // //     leftPart.appendChild(welcome);
+    // //     setTimeout( () => {
+    // //         leftPart.removeChild(welcome);
+    // //     }, 2000);
+    // // }, 100);
 
 </script>
 
-
-<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
-<!---->
-<!--<script>-->
-<!---->
-<!--    /**-->
-<!--     * Построение диаграммы (БДР)-->
-<!--     */-->
-<!---->
-<!--    const ctx2 = document.getElementById('myChart2');-->
-<!---->
-<!--    /**-->
-<!--     * Преобразование элементов полученного массива ( из PHP)-->
-<!--     * из string в integer(требуемой для параметра data для диаграмм)-->
-<!--     */-->
-<!---->
-<!--    let bdr_data = "--><?php //= json_encode($chart_bdr) ?><!--//";-->
-<!--//-->
-<!--//    bdr_data = bdr_data.replace(/[\[\] ]/g, '').split(',');-->
-<!--//-->
-<!--//    new Chart(ctx2, {-->
-<!--//        type: 'pie',-->
-<!--//        data: {-->
-<!--//            labels: ['ТП', 'КЗ', 'Прейскурант', 'ГПК', 'ТП_в', 'КЗ_в', 'Прейскурант_в', 'ГПК_в'],-->
-<!--//            datasets: [{-->
-<!--//                label: 'Количество',-->
-<!--//                data : bdr_data,-->
-<!--//-->
-<!--//                data : [300,50,60,40,100,10,20,15],-->
-<!--//                backgroundColor: [-->
-<!--//                    'rgb(55,56,128)',-->
-<!--//                    'rgb(57,81,150)',-->
-<!--//                    'rgb(27,72,105)',-->
-<!--//                    'rgb(64,147,164)',-->
-<!--//                    'rgb(55,56,128, 0.2)',-->
-<!--//                    'rgb(15,48,154, 0.2)',-->
-<!--//                    'rgb(27,72,105, 0.2)',-->
-<!--//                    'rgb(64,147,164, 0.2)',-->
-<!--//-->
-<!--//                ],-->
-<!--//                borderWidth: 1,-->
-<!--//                hoverOffset: 20-->
-<!--//            }]-->
-<!--//        },-->
-<!--//        // options: {-->
-<!--//        //     scales: {-->
-<!--//        //         y: {-->
-<!--//        //             beginAtZero: true-->
-<!--//        //         }-->
-<!--//        //     }-->
-<!--//        // }-->
-<!--//    });-->
-<!--//-->
-<!--//    /**-->
-<!--//     * Построение диаграммы (ИП)-->
-<!--//     */-->
-<!--//    const ctx3 = document.getElementById('myChart3');-->
-<!--//-->
-<!--//    /**-->
-<!--//     * Преобразование элементов полученного массива ( из PHP)-->
-<!--//     * из string в integer(требуемой для параметра data для диаграмм)-->
-<!--//     */-->
-<!--//-->
-<!--//    let ip_data = "--><?php ////= json_encode($chart_ip) ?><!--//";-->
-<!--//-->
-<!--//    ip_data = ip_data.replace(/[\[\] ]/g, '').split(',');-->
-<!--//    // console.log(typeof(ip_data));-->
-<!--//    // console.log(ip_data)-->
-<!--//-->
-<!--//-->
-<!--//    new Chart(ctx3, {-->
-<!--//        type: 'pie',-->
-<!--//        data: {-->
-<!--//            label: 'Договоры (ИП)',-->
-<!--//            labels: ['ТП', 'КЗ', 'Прейскурант', 'ГПК', 'ТП_в', 'КЗ_в', 'Прейскурант_в', 'ГПК_в'],-->
-<!--//            datasets: [{-->
-<!--//                label: 'Количество',-->
-<!--//                data : ip_data,-->
-<!--//-->
-<!--//                // data : [300,50,60,40,100,10,20,15],-->
-<!--//                backgroundColor: [-->
-<!--//                    'rgb(255, 99, 132)',-->
-<!--//                    'rgb(15,48,154)',-->
-<!--//                    'rgb(255, 205, 86)',-->
-<!--//                    'rgb(117,255,86)',-->
-<!--//                    'rgb(255, 99, 132, 0.2)',-->
-<!--//                    'rgb(54, 162, 235, 0.2)',-->
-<!--//                    'rgb(255, 205, 86, 0.2)',-->
-<!--//                    'rgb(117,255,86, 0.2)',-->
-<!--//-->
-<!--//                ],-->
-<!--//                borderWidth: 1,-->
-<!--//                hoverOffset: 20-->
-<!--//            }]-->
-<!--//        },-->
-<!--//        // options: {-->
-<!--//        //     scales: {-->
-<!--//        //         y: {-->
-<!--//        //             beginAtZero: true-->
-<!--//        //         }-->
-<!--//        //     }-->
-<!--//        // }-->
-<!--//    });-->
-<!--//</script>-->
-
-</div>

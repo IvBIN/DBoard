@@ -16,11 +16,29 @@ class m240423_191235_initDB extends Migration
             "password" => $this->string()->notNull(),
             "photo" => $this->string(),
         ]);
+        $this->createTable("comments", [
+            "id" => $this->primaryKey(),
+            "contracts" => $this->text()->notNull(),
+            "reports" => $this->text()->notNull(),
+            "user_id" => $this->integer()->notNull(),
+            "date" => $this->timestamp()->defaultExpression("NOW()"),
+        ]);
+
 
         $this->insert("users", [
             "login" => "admin",
             "password" => password_hash("admin", PASSWORD_DEFAULT)
         ]);
+        $this->addForeignKey(
+            'comments_to_user_fk',
+            'comments',
+            'user_id',
+            'users',
+            'id',
+            'CASCADE',
+            'CASCADE'
+        );
+
 
     }
 
@@ -28,6 +46,7 @@ class m240423_191235_initDB extends Migration
     public function safeDown()
     {
         $this->dropTable("users");
+        $this->dropTable("comments");
 
 //        echo "m240423_191235_initDB cannot be reverted.\n";
 //

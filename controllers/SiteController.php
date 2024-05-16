@@ -23,18 +23,18 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'index'],
+                'only' => ['logout'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
+//                    [
+//                        'actions' => ['index'],
+//                        'allow' => true,
+//                        'roles' => ['?'],
+//                    ],
 
                 ],
             ],
@@ -84,6 +84,7 @@ class SiteController extends Controller
 
                 $chart_ip = $parser->getDataIp();
                 $count_contract = $parser->getCountContracts();
+                $date_report = $parser->getDateReport();
 
                 $table_bdr = $parser->getInfo();
 //                var_dump($table_bdr);
@@ -175,7 +176,7 @@ class SiteController extends Controller
             ]
         ];
 
-        return $this->render('index',['data_bdr' => $data_bdr, 'data_ip' => $data_ip, 'count_contract' =>$count_contract,'model' => $model]);
+        return $this->render('index',['data_bdr' => $data_bdr, 'data_ip' => $data_ip, 'count_contract' =>$count_contract, 'date_report' =>$date_report, 'model' => $model]);
 //        return $this->render('test',['data_bdr' => $data_bdr]);
     }
 

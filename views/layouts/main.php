@@ -40,17 +40,24 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <nav>
             <ul>
                 <li><a href="/site/help">ℹ️ Помощь</a></li>
+                <?php if (!Yii::$app->user->isGuest): ?>
                 <li><a href="/site/download">⬇️ Скачать шаблон</a></li>
+                <li><a href="#" id="comment">➡️ Комментарии</a></li>
+                <?php endif;?>
                 <?php if (Yii::$app->user->isGuest):?>
-                    <li><a href="/user/login">🛂Войти</a></li>
+                    <li><a href="/user/login">🛂 Войти</a></li>
                     <li><a class="btn btn_header" href="/user/registration">Регистрация</a></li>
+
                 <?php else: ?>
                     <?= '<li>'.
                     Html::beginForm('/user/logout').
                     Html::submitButton('Выход (' . Yii::$app->user->identity->login . ')', ['class' => 'btn']) .
                     Html::endForm() .
-                    '</li>'
-                    ?>
+                    '</li>' ?>
+                
+                    <li><img class="avatar" src=" <?='/images/'. Yii::$app->user->id . '.jpg' ?>"></li>
+
+                    <li class="music">▶️ Музыка 𝄞</li>
 
                 <?php endif; ?>
             </ul>

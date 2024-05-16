@@ -9,8 +9,21 @@ header, footer{
     background: #92c2e1;
     background: rgb(112, 132, 187);
     color: #032557;
-    padding: 10px 0;
+
+    padding: 5px 0;
     /*align-items: center;*/
+}
+
+.logo {
+    color: #032557;
+    border-left: 3px solid  #032557;
+    /*border-left: 3px solid  #F0F0F3;*/
+    border-bottom: 3px solid  #032557;
+    /*border-bottom: 3px solid  #F0F0F3;*/
+}
+.logo:hover {
+    border-left: 3px solid  #2464bb;
+    border-bottom: 3px solid #2464bb;
 }
 
 
@@ -29,17 +42,43 @@ header, footer{
 
 a {
     text-decoration: none;
-    color: #032557;
+    /*color: #032557;*/
+    color: #F0F0F3;
     font-size: 18px;
     padding: 10px 20px;
     border-radius: 5px;
 }
 
 a:hover {
-    /*background: #212b3f;*/
     box-shadow: 0 5px 14px #212b3f;
 }
 
+.music {
+    /*text-decoration: none;*/
+    /*color: #032557;*/
+    /*width: 45px;*/
+    height: 45px;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #F0F0F3;
+}
+
+
+.music:hover {
+    color: #2464bb;
+    box-shadow: 0 5px 14px #212b3f;
+  }
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    /*border: 3px solid #032557;*/
+    border: 3px solid #3C578C;
+    overflow: hidden;
+    border-radius: 50%;
+
+}
 .container {
     margin: 0 auto;
     max-width: 1200px;
@@ -47,6 +86,9 @@ a:hover {
     /*border: 1px solid #83b41d;*/
 }
 
+header {
+    max-height: 70px;
+}
 header .container, nav {
     display: flex;
     justify-content: space-between;
@@ -59,7 +101,7 @@ li {
 
 ul {
     display: flex;
-    gap: 25px;
+    gap: 5px;
     align-items: center;
 }
 .btn {
@@ -100,6 +142,7 @@ body {
 .left_part {
     display: block;
     width: 750px;
+    position: relative;
 
 }
 .right_part{
@@ -117,8 +160,10 @@ body {
     justify-content: space-between;
     margin-left: 20px;
     padding-left: 10px;
+    height: 50px;
     /*background: #92c2e1;*/
-    background: #70bdf6;
+    /*background: #70bdf6;*/
+    background: #e6eafa;
     color: #032557;
     border: 1px solid #92c2e1;
     border-radius: 5px;
@@ -128,6 +173,7 @@ body {
     display: flex;
     width: 350px;
     align-items: center;
+    margin-left: 10px;
 }
 .input_file {
     display: block;
@@ -137,6 +183,12 @@ body {
     display: flex;
     gap: 5px;
     align-items: center;
+}
+.help-block {
+    display: none;
+}
+.control-label {
+    display: none;
 }
 
 
@@ -202,7 +254,7 @@ h4 {
     width: 200px;
     font-family: "Colibri", sans-serif;
     color: #040462;
-    padding: 5px;
+    padding: 0 5px;
     margin-right: 20px;
 }
 .button_block {
@@ -214,9 +266,18 @@ h4 {
 /****** right part ******/
 
 .block_right_up, .block_right_medium, .block_right_down {
-    border: 1px solid #0c4128;
+    /*border: 1px solid #0c4128;*/
 }
 
+.block_right_medium {
+    margin-top: 10px;
+    background: #e6eafa;
+    border-radius: 5px;
+}
+
+.block_control {
+    margin-top: 20px;
+}
 .right_part h4 {
     font-family: "Colibri", sans-serif;
     font-weight: bold;
@@ -230,8 +291,11 @@ h4 {
     /*font-weight: bold;*/
     text-align: center;
     color: #040462;
+    margin-bottom: 10px;
 }
-
+.block_part_contr, .report_block {
+    margin-top: 7px;
+}
 .title_report, .title_control {
     /*display: flex;*/
     font-family: "Colibri", sans-serif;
@@ -242,26 +306,123 @@ h4 {
 
 .info_graf_report1, .info_graf_control {
     max-width: 358px;
-    border: 1px solid #0c4128;
+    /*border: 1px solid #0c4128;*/
     text-align: center;
 }
 
-.report_block, .block_part_contr {
+.report_block, .block_part_contr, .report_date_block {
     display: flex;
     justify-content: space-between;
 }
 .report_part, .control_part {
     /*width: 50px;*/
     width: max-content;
-    background: #70bdf6;
+
+    /*background: #70bdf6;*/
     color: #032557;
+    border: 1px solid #70bdf6;
     border-radius: 5px;
     text-align: center;
+}
+
+.report_date_block {
+    margin-top: 5px;
+}
+/*input[type="date"]::placeholder {*/
+
+/*    -webkit-appearance: none;*/
+/*    appearance: none;*/
+/*    opacity: 0;*/
+
+/*}*/
+.report_part {
+    width: 50px;
+    height: 21px;
+    font-size:12px;
+}
+.rep_date {
+    width: 80px;
+}
+.control_part {
+    width: 30px;
+}
+
+.qartal {
+    width: 82px ;
 }
 
 footer {
     text-align: center;
 }
+
+
+/***** form registration ******/
+.form {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__wrapper {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -10px -10px 30px #fff, 10px 10px 30px #AEAEC066;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 8px;
+}
+
+.label {
+    font-size: 1em;
+}
+
+.input {
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 1.4em;
+    padding: 3px 5px;
+}
+
+.error {
+    color: red;
+    font-size: .8em;
+    margin-top: 4px;
+}
+
+/***** form registration ******/
+
+/******* Welcome ********/
+
+.welcome_box{
+    width: max-content;
+    /*height: 200px;*/
+    padding: 80px 80px;
+    /*text-align: center;*/
+    vertical-align: center;
+    border-radius: 20px;
+    border: 5px outset #F0F0F3;
+    box-shadow: 0 20px 60px #212b3f;
+    background: #7084BBFF;
+    color: #F0F0F3;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    z-index: 50;
+    font-family: Colibri, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+
 
 /*.help_head h2 {*/
 /*    text-align: center;*/

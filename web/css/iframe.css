@@ -14,6 +14,7 @@
     height: max-content;
     text-decoration: none;
     font-size: 20px;
+    padding: 5px;
     margin: 5px 10px;
     /*padding: 5px;*/
     background: #3C578C;
@@ -91,14 +92,14 @@
 }
 .table_head {
     /*border: 1px solid #FFFFFF;*/
-    border-width: 1px;
+    /*border-width: 1px;*/
 }
 th, td {
     padding: 5px 10px;
     font-family: "Colibri", sans-serif;
     font-size: 12px;
+    background: #e6eafa;
     /*background: #92c2e1;*/
-    background: #70bdf6;
     text-align: center;
     margin: 5px;
     /*border: 1px solid #FFFFFF;*/

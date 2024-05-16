@@ -15,7 +15,9 @@ use yii\widgets\ActiveForm;
                 'labelOptions' => ['class' => 'label'],
                 'inputOptions' => ['class' => 'input'],
                 'errorOptions' => ['class' => 'error']
-            ]
+            ],
+            'options' =>
+                ['enctype' => 'multipart/form-data'],
         ]); ?>
         <div>
             <?= $form->field($model, 'login')->textInput() ?>
@@ -26,6 +28,7 @@ use yii\widgets\ActiveForm;
         <div>
             <?= $form->field($model, 'passwordRepeat')->passwordInput() ?>
         </div>
+        <?= $form->field($model, 'avatar')->fileInput(['multiple' => true]) ?>
         <?= Html::submitButton('Регистрация', ['class' => 'btn']) ?>
         <?php ActiveForm::end(); ?>
     </div>

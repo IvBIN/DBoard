@@ -1,5 +1,4 @@
 <?php
-
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
 

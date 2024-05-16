@@ -72,6 +72,17 @@ class Parser
         return $finallyData;
     }
 
+    public function getDateReport()
+    {
+        $finallyData = [];
+        $cells = ['o6','p6','q6','r6'];
+        foreach ($cells as $value) {
+            $finallyData[] = (string)$this->data->getCell($value)->getFormattedValue();
+        }
+        return $finallyData;
+    }
+
+
     /**
      * Функция для получения статистики за период (Дополни при необходимости)
      * @return array Массив со статистикой
