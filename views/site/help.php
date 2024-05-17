@@ -39,7 +39,7 @@
         </div>
     </body>
     <footer class="container footer_field">
-            <h2>&copy;LLC DBoard</h2>
+            <h2>&copy;LLC DBoard   ®Designed by BulgakovIN</h2>
     </footer>
 
 </html>

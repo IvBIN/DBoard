@@ -1,4 +1,4 @@
-
+"use strict";
 let iframe = document.getElementById('iframe');
 iframe.style.display = 'none';
 let buttonOpenBdr = document.getElementById('buttonOpenBdr');
@@ -79,7 +79,7 @@ qartal_cell.forEach((qartal) => {
 // ***** Music *****
 
 let music = new Audio();
-music.src = './sound/Silver.mp3';
+music.src = './sound/fon_urban.mp3';
 
 let sound = document.querySelector('.music');
 console.log(sound);

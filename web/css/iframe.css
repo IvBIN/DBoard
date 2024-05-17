@@ -112,3 +112,23 @@ h2 {
     color: #032557;
     /*margin-left: 10px;*/
 }
+
+/****** Comments *******/
+
+.comments {
+    width: 285px;
+    /*border: 1px solid red;*/
+}
+.comment {
+    width: 280px;
+    padding: 3px;
+    color: #032557;
+    border: 1px solid #70bdf6;
+    background: #e6eafa;
+
+}
+.comment__wrapper {
+    display: block;
+    /*border: 1px solid red;*/
+    position: fixed;
+}

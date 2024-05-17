@@ -43,6 +43,8 @@ $this->title = 'Главная';
             </div>
             <?php endif;?>
 
+            <iframe id="iframe2" class="active iframe2" name="comment" width="295" height="749"></iframe>
+
             <div class="block_charts">
                 <div class="chart">
                     <h4>Договоры (БДР)</h4>
@@ -105,7 +107,7 @@ $this->title = 'Главная';
             </div>
 
             <iframe id="iframe" class="active iframe" name="table_bdr" width="740" height="295"></iframe>
-            <iframe id="iframe2" class="active iframe" name="comment" width="1142" height="295"></iframe>
+<!--            <iframe id="iframe2" class="active iframe2" name="comment" width="295" height="795"></iframe>-->
         </div>
 
         <div class="right_part">
@@ -115,21 +117,34 @@ $this->title = 'Главная';
                 <div class="info_graf_report1">
                     <span class="title_context title_report">ЕАЭС</span>
                     <div class="report_block">
-                        <span class="report_part">I</span>
-                        <span class="report_part">II</span>
-                        <span class="report_part">III</span>
-                        <span class="report_part">IV</span>
-                    </div>
-                    <div class="report_date_block">
-                        <span class="report_part rep_date"><?php echo $date_report[0]?></span>
-                        <span class="report_part rep_date"><?php echo $date_report[1]?></span>
-                        <span class="report_part rep_date"><?php echo $date_report[2]?></span>
-                        <span class="report_part rep_date"><?php echo $date_report[3]?></span>
-<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
-<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
-<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
-<!--                        <input type="date" class="report_part rep_date" id="date" name="date"/>-->
-                    </div>
+                        <div class="report_parts">
+                            <span class="report_part">I</span>
+<!--                            <span class="rep_date">--><?php //echo $date_report[0]?><!--</span>-->
+                            <span class="report_part rep_date"><?php echo $date_report[0]?></span>
+                        </div>
+                        <div class="report_parts">
+                            <span class="report_part">II</span>
+                            <span class="report_part rep_date"><?php echo $date_report[1]?></span>
+                        </div>
+                        <div class="report_parts">
+                            <span class="report_part">III</span>
+                            <span class="report_part rep_date"><?php echo $date_report[2]?></span>
+                        </div>
+                        <div class="report_parts">
+                            <span class="report_part">IV</span>
+                            <span class="report_part rep_date"><?php echo $date_report[3]?></span>
+                        </div>
+
+<!--                        <span class="report_part">II</span>-->
+<!--                        <span class="report_part">III</span>-->
+<!--                        <span class="report_part">IV</span>-->
+<!--                    </div>-->
+<!--                    <div class="report_date_block">-->
+<!--                        <span class="report_part rep_date">--><?php //echo $date_report[0]?><!--</span>-->
+<!--                        <span class="report_part rep_date">--><?php //echo $date_report[1]?><!--</span>-->
+<!--                        <span class="report_part rep_date">--><?php //echo $date_report[2]?><!--</span>-->
+<!--                        <span class="report_part rep_date">--><?php //echo $date_report[3]?><!--</span>-->
+<!--                    </div>-->
                 </div>
             </div>
             <div class="block_right_medium">
