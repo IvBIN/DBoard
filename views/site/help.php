@@ -21,7 +21,7 @@
                 <h2 class="welcome">Добро пожаловать!</h2>
             </div>
             <div class="help_field">
-                <h2 class="terms_title">Терминология</h2>
+                <h2 class="terms_title">Термины</h2>
                 <span class="term"><b>Дашборд</b> — электронный документ, где лаконично представлены статистические данные, отчёты и элементы инфографики.</span>
                 <h2 class="terms_title">Инструкция</h2>
                 <ol>
